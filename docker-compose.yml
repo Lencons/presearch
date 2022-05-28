@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  presearch-node:
+    image: presearch/node:latest
+    container_name: presearch-node
+    restart: unless-stopped
+    networks:
+      - presearch
+    volumes:
+      - app-node:/app/node
+
+  presearch-auto-updater:
+    image: presearch/auto-updater:latest
+    container_name: presearch-auto-updater
+    restart: unless-stopped
+    networks:
+      - presearch
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - WATCHTOWER_CLEANUP=true
+      - WATCHTOWER_POLL_INTERVAL=900
+      - WATCHTOWER_LABEL_ENABLE=true
+    
+
+volumes:
+  app-node:
+    driver: local
+    driver_opts:
+      type: "nfs"
+      o: "addr=sr-nas01.lennoxconsulting.com.au,nolock,rw,sync,rsize=32768,wsize=32768"
+      device: ":/mnt/t1-pool1/san/presearch"
+
+networks:
+  presearch:
