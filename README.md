@@ -1,4 +1,4 @@
-# Presearch
+# Presearch Node
 
 Presearch is a decentralized search engine to which you can find more information about it at https://presearch.io/
 
@@ -12,7 +12,7 @@ Instructions are only provided for Linux systems and I am assuming that you alre
 1. Copy the ```docker-compose.yml``` file within this repository into your working directory.
 1. Create a ```docker-compose.override.yml``` as described below and update it with your Presearch registeration code.
 1. The containers can be started with ```docker-compose up -d```
-1. Monitor the startup of the node with ```docker logs -f presearch-node```, when then node is running a "Node is listening for searches..." log entry will be seen.
+1. Monitor the startup of the node with ```docker logs -f presearch-node```, when the node is running a "Node is listening for searches..." log entry will be seen.
 1. Once the node is responding to requests, stats will appear in your dashboard at https://nodes.presearch.com/dashboard
 
 # Docker Compose Sensitive Information
