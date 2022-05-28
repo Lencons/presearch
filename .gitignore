@@ -1,0 +1,2 @@
+# Sensitive information stored within the override
+docker-compose.override.yml
